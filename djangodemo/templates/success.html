@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="/static/js/jquery-3.5.0.min.js"></script>
+    <style>
+        body{
+            background-color: #ccc;
+
+        }
+        table{
+            width: 300px;
+            border-collapse: collapse;
+        }
+    </style>
+    <script>
+        $(function () {
+            $("#add").click(function () {
+
+                window.location.href = "/addUserUI/"
+            })
+
+
+        })
+
+        function delUser(userId){
+            alert(userId);
+
+
+            window.location.href = "/delUser/?userId="+userId;
+
+            window.location.href = "/delUser/?userId="+userId;
+        }
+    </script>
+</head>
+<body>
+<button type="button" class="btn btn-success" id="add">新增用户</button>
+<table border="1">
+    <tr>
+        <th>账号</th>
+        <th>密码</th>
+        <th colspan="2">操作</th>
+    </tr>
+    {% for user in data %}
+        <tr>
+{#            <td>{{ user.userId }}</td>#}
+            <td>{{ user.username }}</td>
+            <td>{{user.password}}</td>
+            <td><button type="button">修改</button></td>
+            <td><button type="button" onclick="delUser({{ user.userId }})">删除</button></td>
+
+        </tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>

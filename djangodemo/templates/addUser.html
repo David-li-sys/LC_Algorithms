@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<link rel="stylesheet" type="text/css" href="/static/css/index.css"/>
+<body>
+<script src="/static/js/jquery-3.5.0.min.js"></script>
+<script>
+        $(function () {
+            $("#add").click(function () {
+                alert(222)
+                window.location.href = "/addUser/"
+            })
+        })
+    </script>
+
+<div id="login">
+     <h1>新增</h1>
+    <form action="/addUser/" method="post">
+   <input type="text" required="required" placeholder="用户名" name="username"/>
+    <input type="password" required="required" placeholder="密码" name="password"/>
+    <button class="but" type="submit">新增</button>
+</form>
+</div>
+
+
+</body>
+</html>
