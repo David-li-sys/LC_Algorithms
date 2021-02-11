@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace= "com.zlt.dao.OrderMapper" >
+
+    <insert id="insertOrder" parameterType="com.zlt.domain.Order">
+        insert into orderinfo(orderId,orderNo,userId,goodsId,addressId,buyCount,orderStatus,payPrice,createTime,payTime,alipayNo)
+        values
+        (#{orderId},#{orderNo},#{userId},#{goodsId},#{addressId},#{buyCount},#{orderStatus},#{payPrice},#{createTime},#{payTime},#{alipayNo})
+    </insert>
+
+    <select id="findOrderByUserId" resultType="com.zlt.domain.Order">
+        select * from orderinfo where userId=#{userId}
+    </select>
+
+
+
+</mapper>

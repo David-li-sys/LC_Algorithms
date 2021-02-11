@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace= "com.zlt.dao.GoodDetailMapper" >
+    <select id="getGoodDetail" resultType="com.zlt.domain.GoodDetail">
+        SELECT
+            goods.goodsId,goods.goodsName,goods.goodsTitle,goods.goodsPrice,
+            goods.goodsImg,goods.goodsDesc,goods.goodsStock,goods.categoryId,
+            miaoshagoods.miaoshagoodsId,miaoshagoods.miaoshaStock,miaoshagoods.miaoshaPrice,
+            miaoshagoods.beginTime,miaoshagoods.endTime,miaoshagoods.miaoshagoodsId
+
+         FROM goods,miaoshagoods WHERE goods.goodsId=miaoshagoods.goodsId AND goods.goodsId=#{miaoshaGoodsId}
+
+   </select>
+
+
+</mapper>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace= "com.zlt.dao.GoodMapper" >
+    <select id="findAll" resultType="com.zlt.domain.Good">
+        select * from goods
+    </select>
+
+    <select id="findGoodById" resultType="com.zlt.domain.Good">
+        select * from goods where goodsid=#{goodId}
+    </select>
+
+    <delete id="deleteGood">
+        delete from goods where goodsid=#{goodId}
+    </delete>
+
+    <update id="updateGood" parameterType="com.zlt.domain.Good">
+        update goods set
+            goodsName=#{goodsName},
+            goodsTitle=#{goodsTitle},
+            goodsPrice=#{goodsPrice},
+            goodsImg=#{goodsImg},
+            goodsDesc=#{goodsDesc},
+            goodsStock=#{goodsStock},
+            categoryId=#{categoryId}
+        where
+            goodsid=#{goodsId}
+    </update>
+
+    <insert id="insertGood" parameterType="com.zlt.domain.Good">
+        insert into goods(goodsName,goodsTitle,goodsPrice,goodsImg,goodsDesc,goodsStock,categoryId)
+        values(#{goodsName},#{goodsTitle},#{goodsPrice},#{goodsImg},#{goodsDesc},#{goodsStock},#{categoryId})
+    </insert>
+
+    <select id="findSomeGoods" resultType="com.zlt.domain.Good">
+        select * from goods limit #{start},#{step}
+    </select>
+
+</mapper>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace= "com.zlt.dao.BusinessUserMapper" >
+    <select id="findAllBusinessUser" resultType="com.zlt.domain.BusinessUser">
+        select * from userinfo;
+    </select>
+
+    <insert id="insertUser" parameterType="com.zlt.domain.BusinessUser">
+        insert into userinfo(username,userpwd,useremail,userphone,lastlogintime,registtime)
+        values(#{userName},#{userPwd},#{userEmail},#{userPhone},#{lastLoginTime},#{registTime})
+    </insert>
+
+    <update id="updateUser" parameterType="com.zlt.domain.BusinessUser">
+        update userinfo set
+            username=#{userName},
+            userpwd=#{userPwd},
+            useremail=#{userEmail},
+            userphone=#{userPhone},
+            lastlogintime=#{lastLoginTime},
+            registtime=#{registTime}
+        where userid=#{userId}
+    </update>
+
+    <select id="findUserById" resultType="com.zlt.domain.BusinessUser">
+        select * from userinfo where userid=#{userId}
+    </select>
+
+    <delete id="deleteUser" parameterType="java.lang.Integer">
+        delete from userinfo where userid=#{userId}
+    </delete>
+    
+    <select id="getUserByName" parameterType="java.lang.String" resultType="com.zlt.domain.BusinessUser">
+        select * from userinfo where username=#{username}
+    </select>
+
+</mapper>

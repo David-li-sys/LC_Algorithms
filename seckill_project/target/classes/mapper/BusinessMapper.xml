@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace= "com.zlt.dao.BusinessMapper" >
+    <select id="findById" parameterType="int" resultType="com.zlt.domain.Business">
+        select * from business where businessId=#{businessId}
+    </select>
+    <select id="findAll" resultType="com.zlt.domain.Business">
+        select * from business
+    </select>
+    <insert id="insert" parameterType="com.zlt.domain.Business">
+        insert into business(businessName,businessState) values(#{businessName},#{businessState})
+    </insert>
+    <delete id="delete" parameterType="java.lang.Integer">
+        delete from business where businessId=#{businessId}
+    </delete>
+    <update id="update" parameterType="com.zlt.domain.Business">
+        update business <set>
+        <if test="businessName != null">businessName=#{businessName},</if>
+        <if test="businessState != null">businessState=#{businessState},</if>
+    </set> where businessId=#{businessId}
+    </update>
+    <select id="findGoodByBusiness" parameterType="int" resultType="com.zlt.domain.GoodVO">
+        select * from goods,bussiness_goods where goods.goodsId=bussiness_goods.goodsId and bussiness_goods.businessId=#{id}
+    </select>
+
+</mapper>

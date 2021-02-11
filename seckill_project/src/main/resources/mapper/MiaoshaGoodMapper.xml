@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace= "com.zlt.dao.MiaoshaMapper" >
+    <select id="findAllMiaoshaGoods" resultType="com.zlt.domain.Good">
+        SELECT goods.`goodsId`,goods.`goodsName`,goods.`goodsTitle`,goods.`goodsPrice`,goods.`goodsImg`,goods.`goodsDesc`,goods.`goodsStock`,goods.`categoryId`
+        FROM goods,miaoshagoods
+        WHERE goods.`goodsId`=miaoshagoods.`goodsId`
+   </select>
+
+    <insert id="insertMiaoshaGood" parameterType="com.zlt.domain.MiaoshaGood">
+        insert into miaoshagoods(goodsId,miaoshaStock,miaoshaPrice,beginTime,endTime)
+        values(#{goodsId},#{miaoshaStock},#{miaoshaPrice},#{beginTime},#{endTime})
+    </insert>
+
+    <delete id="deleteMiaoshaGood" >
+        delete from miaoshagoods where miaoshagoodsId=#{goodsId}
+    </delete>
+
+
+</mapper>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace= "com.zlt.dao.UserMapper" >
+    <select id="findAllUser" resultType="com.zlt.domain.User">
+        select * from userinfo;
+    </select>
+
+    <insert id="insertUser" parameterType="com.zlt.domain.User">
+        insert into userinfo(username,userpwd,useremail,userphone)
+        values(#{userName},#{userPwd},#{userEmail},#{userPhone})
+    </insert>
+
+    <update id="updateUser" parameterType="com.zlt.domain.User">
+        update userinfo set
+            username=#{userName},
+            userpwd=#{userPwd},
+            useremail=#{userEmail},
+            userphone=#{userPhone},
+            lastlogintime=#{lastLoginTime},
+            registtime=#{registTime}
+        where userid=#{userId}
+    </update>
+
+    <select id="findUserById" resultType="com.zlt.domain.User">
+        select * from userinfo where userId=#{userId}
+    </select>
+
+    <delete id="deleteUser" parameterType="int">
+        delete from userinfo where userid=#{userId}
+    </delete>
+
+    <select id="getUserByName" parameterType="java.lang.String" resultType="com.zlt.domain.User">
+        select * from userinfo where username=#{username}
+    </select>
+
+</mapper>
